@@ -1,11 +1,13 @@
 import random
-
+import seaborn as sns
+import matplotlib.pyplot as plt
 boxkey = {}
 prisonNo = range(1,101)
-
 succeed = 0
 
-for i in range(1,100):
+result = []
+
+for trial in range(1,10001):
 
     box_list = random.sample(prisonNo,100)
 
@@ -34,20 +36,26 @@ for i in range(1,100):
                 box = key
                 key = boxkey[box]
 
-                
-
                 n += 1
 
-    print("total {} prisoners found the key".format(found))
+    #print("total {} prisoners found the key".format(found))
 
     if found == 100:
         succeed +=1 
     else:
          pass
 
+    #print(trial)
+    result.append(round((succeed/trial)*100,2))
 
-print("total {} times succeed out of 100".format(succeed))
 
+#print("total {} times succeed out of 100".format(succeed))
+
+#print(result)
+
+
+plt.plot(result)
+plt.show()
 
 
 
